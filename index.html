@@ -1009,7 +1009,7 @@
                                                     <div data-aos-delay="600" class="col-lg-7 contact-input">
                                                         <div class="contact-form-wrapper ml--0">
                                                             <div class="introduce">
-                                                                <form class="rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="mail.php">
+                                                                <form class="rnt-contact-form  row" id="contactform" onsubmit="submitform(event)">
 
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
@@ -1240,6 +1240,7 @@
         </div>
     </div> -->
 
+
     <div class="backto-top">
         <div>
             <i data-feather="arrow-up"></i>
@@ -1257,8 +1258,41 @@
     <script src="assets/js/vendor/wow.js"></script>
     <script src="assets/js/vendor/aos.js"></script>
     <script src="assets/js/vendor/particles.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- main JS -->
     <script src="assets/js/main.js"></script>
+    <script>
+        const get_data = ()=>{
+            return {
+                "name":document.getElementById("contact-name").value,
+                "Mobile":document.getElementById("contact-phone").value,
+                "email":document.getElementById("contact-email").value,
+                "subject":document.getElementById("subject").value,
+                "message":document.getElementById("contact-message").value
+            }
+
+        }
+
+        const submitform = async (event)=> {
+            event.preventDefault();
+            const data = get_data();
+            axios.post('https://contact-us-form-to-email.vercel.app/send-mail?to=rs',data)
+            .then(response => {
+            const resp = response.data
+            if(resp.status){
+                alert("Your message has been sucessfully received")
+                document.getElementById("contactform").reset();
+            }
+            else{
+                alert("Something went wrong ! please try again later.")
+            }
+            
+            })
+            .catch(error => console.error(error))
+
+        }
+
+    </script>
 </body>
 
 </html>
