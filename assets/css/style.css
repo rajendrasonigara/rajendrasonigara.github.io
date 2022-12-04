@@ -10152,7 +10152,8 @@ body.modal-open {
 .modal {
   z-index: 99999999;
   background: #212428;
-  padding: 60px 15px !important; }
+  /* padding: 60px 15px !important; */
+   }
   .modal.modal-boxed-home {
     width: calc(100% - 50px) !important;
     left: 50%;
@@ -10791,7 +10792,8 @@ div#featured-project-carousel {
     border-radius: 10px;
     padding: 3px;
     background: #212428;
-    box-shadow: inset 8px 8px 16px #00000075,  inset -8px -8px 16px #383e4575; }
+    box-shadow: inset 8px 8px 16px #00000075, 
+ inset -8px -8px 16px #383e4575; }
     .progress-charts .progress .progress-bar {
       overflow: visible;
       position: relative;
@@ -12902,7 +12904,7 @@ div#featured-project-carousel {
   box-shadow: var(--shadow-1); }
   @media only screen and (max-width: 575px) {
     .backto-top > div {
-      bottom: 30px; } }
+      bottom: 60px; } }
   .backto-top > div:hover::after {
     opacity: 1; }
   .backto-top > div::after {
